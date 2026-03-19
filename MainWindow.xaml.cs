@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WpfApp2
 {
@@ -81,6 +82,19 @@ namespace WpfApp2
 
                 MessageBox.Show("password deleted!", "done",
                     MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+        private void passwors_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (passwors.SelectedItem != null)
+            {
+                string selectedPassword = passwors.SelectedItem.ToString();
+                Clipboard.SetText(selectedPassword);
+
+                MessageBox.Show($"password copied\n{selectedPassword}",
+                               "done",
+                               MessageBoxButton.OK,
+                               MessageBoxImage.Information);
             }
         }
     }

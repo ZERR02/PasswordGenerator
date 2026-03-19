@@ -79,8 +79,6 @@
                 Click="DeleteButton_Click" Style="{DynamicResource ButtonStyle1}"/>
 
         <ListBox x:Name="passwors" HorizontalAlignment="Left" Height="200" 
-                 VerticalAlignment="Top" Width="392" Margin="10,160,0,0"/>
-
-        <!-- Подсказка -->
+                 VerticalAlignment="Top" Width="392" Margin="10,160,0,0" MouseDoubleClick="passwors_MouseDoubleClick"/>
     </Grid>
 </Window>
