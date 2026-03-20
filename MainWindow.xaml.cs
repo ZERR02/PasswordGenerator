@@ -97,5 +97,48 @@ namespace WpfApp2
                                MessageBoxImage.Information);
             }
         }
+        private void CopyMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (passwors.SelectedItem != null)
+            {
+                string selectedPassword = passwors.SelectedItem.ToString();
+                Clipboard.SetText(selectedPassword);
+
+                textb.Text = "✓ password copied: " + selectedPassword;
+
+            }
+            else
+            {
+                MessageBox.Show("choose a password", "error",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+       
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (passwors.SelectedItem != null)
+            {
+                string selectedPassword = passwors.SelectedItem.ToString();
+
+                MessageBoxResult result = MessageBox.Show(
+                    $"delete password: {selectedPassword}?",
+                    "confirmation of deletion",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    db.DeletePassword(selectedPassword);
+                    LoadPasswords();
+                    textb.Text = "✓ password deleted";
+                }
+            }
+            else
+            {
+                MessageBox.Show("choose a password", "error",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

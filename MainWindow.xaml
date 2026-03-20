@@ -78,7 +78,28 @@
                 VerticalAlignment="Top" Width="264" Height="40"
                 Click="DeleteButton_Click" Style="{DynamicResource ButtonStyle1}"/>
 
-        <ListBox x:Name="passwors" HorizontalAlignment="Left" Height="200" 
-                 VerticalAlignment="Top" Width="392" Margin="10,160,0,0" MouseDoubleClick="passwors_MouseDoubleClick"/>
+        <ListBox x:Name="passwors" 
+         HorizontalAlignment="Left" Height="200" 
+         VerticalAlignment="Top" Width="392" 
+         Margin="10,160,0,0" 
+         MouseDoubleClick="passwors_MouseDoubleClick">
+
+            <!-- Добавьте это контекстное меню -->
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="copy password" Click="CopyMenuItem_Click">
+                        <MenuItem.Icon>
+                            <TextBlock Text="📋"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem Header="delete password" Click="DeleteMenuItem_Click">
+                        <MenuItem.Icon>
+                            <TextBlock Text="🗑"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
     </Grid>
 </Window>
